@@ -21,7 +21,7 @@ public class Discipline {
 	@NotEmpty
 	private String name;
 	
-	@Column(columnDefinition="default='0'")
+	@Column
 	//@Range(min = 1)
 	private int playersNumber;
 	

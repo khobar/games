@@ -4,10 +4,11 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <p:page>
 	<div class="container">
 
-		<a href="<c:url value="/player/list"/>"><i class="icon-arrow-left"></i>Back</a>
+		<a href="<c:url value="/discipline/list"/>"><i class="icon-arrow-left"></i>Back</a>
 		<f:form commandName="discipline">
 			<p:field path="name" label="Name">
 				<f:input path="name" />

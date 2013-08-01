@@ -38,8 +38,11 @@ public class DisciplineController {
 		if (result.hasErrors()) {
 			return "discipline/edit";
 		} else {
+			if (disc.getPlayersNumber() == 0) {
+				disc.setPlayersNumber(1);
+			}
 			Discipline saved = discRepo.save(disc);
-			return "redirect:" + saved.getId();
+			return "redirect:./list";
 		}
 	}
 
@@ -55,25 +58,27 @@ public class DisciplineController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public String saveDisc(@PathVariable Integer id, @Valid @ModelAttribute Discipline disc, BindingResult result) {
+	public String saveDisc(@PathVariable Integer id,
+			@Valid @ModelAttribute Discipline disc, BindingResult result) {
 		if (!result.hasErrors()) {
 			disc.setId(id);
 			discRepo.save(disc);
 		}
-		
+
 		return "discipline/edit";
 	}
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String listDisciplines(@RequestParam(required=false) String name, Model model) {
-		List<Discipline> distList ;
-		if (name==null) {
-			distList = discRepo.findAll();	
-		}else{
+	public String listDisciplines(@RequestParam(required = false) String name,
+			Model model) {
+		List<Discipline> distList;
+		if (name == null) {
+			distList = discRepo.findAll();
+		} else {
 			distList = discRepo.findByName(name);
 		}
 		model.addAttribute("distList", distList);
 		return "discipline/list";
 	}
 
-	
 }
