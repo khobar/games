@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean class="com.khobar.springgames.service.ConsolePlayerPresenter">
+		<property name="consoleUtils" ref="consoleUtils"/>
+	</bean>
+	
+	<bean id="consoleUtils" class="com.khobar.springgames.utils.ConsoleUtils"></bean>
+	<bean id="hashUtils" class="com.khobar.springgames.utils.HashUtils"></bean>
+	<bean id="swingUtils" class="com.khobar.springgames.utils.SwingUtils"></bean>
+		
+</beans>
