@@ -108,7 +108,7 @@ public class PlayerController {
 				Discipline newDisc = player.getDiscipline();
 				System.out.println("New discipline" + newDisc.getName());
 				if (!oldDisc.getName().equals(newDisc.getName())) {
-					disciplineService.updateNo(oldDisc, newDisc);
+					disciplineService.updateNo(oldDisc, newDisc); //number not updating 
 				}
 			} else {
 				playerRepository.save(player);
