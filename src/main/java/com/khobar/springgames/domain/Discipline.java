@@ -54,7 +54,7 @@ public class Discipline {
 	}
 
 	public int getPlayersNumber() {
-		return playersNumber;
+		return playersNumber -1;
 	}
 
 	public void setPlayersNumber(int playersNumber) {

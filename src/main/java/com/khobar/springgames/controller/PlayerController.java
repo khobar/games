@@ -34,6 +34,7 @@ public class PlayerController {
 	@Autowired
 	private DisciplineRepository discRepository;
 
+	@Autowired
 	private DisciplineService disciplineService;
 
 	@ModelAttribute("disciplines")
@@ -66,15 +67,7 @@ public class PlayerController {
 		if (result.hasErrors()) {
 			return "player/edit";
 		} else {
-			// Check disciplines
-			Discipline oldDisc = playerRepository.findOne(player.getId())
-					.getDiscipline();
-			System.out.println("Old discipline" + oldDisc.getName());
-			Discipline newDisc = player.getDiscipline();
-			System.out.println("New discipline" + newDisc.getName());
-			if (!oldDisc.getName().equals(newDisc.getName())) {
-				disciplineService.updateNo(oldDisc, newDisc);
-			}
+			disciplineService.addNo(player.getDiscipline());
 			playerService.save(player);
 			return "redirect:./list";
 		}
@@ -108,9 +101,19 @@ public class PlayerController {
 			@Valid @ModelAttribute Player player, BindingResult result) {
 		if (!result.hasErrors()) {
 			player.setId(id);
-			playerRepository.save(player);
+			Player playerInRepo = playerRepository.findOne(player.getId());
+			if (playerInRepo != null) {
+				Discipline oldDisc = playerInRepo.getDiscipline();
+				System.out.println("Old discipline" + oldDisc.getName());
+				Discipline newDisc = player.getDiscipline();
+				System.out.println("New discipline" + newDisc.getName());
+				if (!oldDisc.getName().equals(newDisc.getName())) {
+					disciplineService.updateNo(oldDisc, newDisc);
+				}
+			} else {
+				playerRepository.save(player);
+			}
 		}
-
 		return "player/edit";
 	}
 
