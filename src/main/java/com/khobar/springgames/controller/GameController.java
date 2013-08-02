@@ -88,7 +88,7 @@ public class GameController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String savePlayer(@Valid @ModelAttribute Game game,
+	public String saveGame(@Valid @ModelAttribute Game game,
 			BindingResult result) {
 		if (result.hasErrors()) {
 			return "games/edit";

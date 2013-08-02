@@ -16,7 +16,7 @@
 <body>
 	<div class="navbar">
 		<div class="navbar-inner">
-			<a class="brand" href="#">Games Tracker</a>
+			<a class="brand" href="<c:url value="/games/list"/>">Games Tracker</a>
 			<ul class="nav">
 				<li><a href="<c:url value="/games/list"/>">Games</a></li>
 				<li><a href="<c:url value="/player/list"/>">Players</a></li>

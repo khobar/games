@@ -9,11 +9,6 @@
 	<div class="container">
 		<a href="<c:url value="/games/list"/>"><i class="icon-arrow-left"></i>Back</a>
 		<f:form commandName="game" cssClass="form-inline">
-			<p:field path="discipline" label="Discipline">
-				<f:select path="discipline">
-					<f:options items="${disciplines}" itemLabel="name" itemValue="id" />
-				</f:select>
-			</p:field>
 			<%-- 			<c:forEach var="entry" items="${players}"> --%>
 			<%--   				Key: <c:out value="${entry.key.name}" /> --%>
 			<%--   				Value: <c:out value="${entry.value}" /><br> --%>
@@ -22,14 +17,14 @@
 			<p:field path="player1" label="Player 1">
 				<f:select path="player1">
 					<c:forEach items="${players}" var="item">
-						<f:option value="${item.id}">${item.name} ${item.surname} ${item.discipline.name}</f:option>
+						<f:option value="${item.id}">${item.name} ${item.surname} (${item.discipline.name})</f:option>
 					</c:forEach>
 				</f:select>
 			</p:field>
 			<p:field path="player2" label="Player 2">
 				<f:select path="player2">
 					<c:forEach items="${players}" var="item">
-						<f:option value="${item.id}">${item.name} ${item.surname} ${item.discipline.name}</f:option>
+						<f:option value="${item.id}">${item.name} ${item.surname} (${item.discipline.name})</f:option>
 					</c:forEach>
 				</f:select>
 			</p:field>

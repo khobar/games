@@ -21,6 +21,7 @@ public class GameService {
 		Player player1 = game.getPlayer1();
 		Player player2 = game.getPlayer2();
 		if (player1.getDiscipline().equals(player2.getDiscipline())) {
+			game.setDiscipline(player1.getDiscipline());
 			return gameRepository.save(game);
 		} else {
 			throw new ValidationException(
