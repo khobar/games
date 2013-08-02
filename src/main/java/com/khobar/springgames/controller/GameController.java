@@ -45,8 +45,8 @@ public class GameController {
 		return discRepository.findAll();
 	}
 
-	@ModelAttribute("players")
-	public Map<Discipline, List<Player>> players() {
+	@ModelAttribute("players_map")
+	public Map<Discipline, List<Player>> map_players() {
 		// create map corresponding discipline|List of players
 		List<Player> playerList = playerRepository.findAll();
 
@@ -66,6 +66,12 @@ public class GameController {
 		}
 
 		return playerDisciplines;
+	}
+
+	@ModelAttribute("players")
+	public List<Player> players() {
+		// create map corresponding discipline|List of players
+		return playerRepository.findAll();
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
