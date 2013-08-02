@@ -16,8 +16,7 @@
 
 		</div>
 		<a href="<c:url value="/player/"/>" class="btn"><i
-			class="icon-plus"></i>Player</a> <a href="<c:url value="/discipline/"/>"
-			class="btn"><i class="icon-plus"></i>Discipline</a>
+			class="icon-plus"></i>Player</a>
 
 		<table class="table">
 			<thead>

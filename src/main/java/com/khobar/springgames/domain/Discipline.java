@@ -22,7 +22,7 @@ public class Discipline {
 	private String name;
 	
 	@Column
-	//@Range(min = 1)
+	//@Range(min = 2)
 	private int playersNumber;
 	
 	@Column
@@ -54,7 +54,7 @@ public class Discipline {
 	}
 
 	public int getPlayersNumber() {
-		return playersNumber -1;
+		return playersNumber -2;
 	}
 
 	public void setPlayersNumber(int playersNumber) {

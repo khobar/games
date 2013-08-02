@@ -1,6 +1,9 @@
 package com.khobar.springgames.controller;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -43,8 +46,26 @@ public class GameController {
 	}
 
 	@ModelAttribute("players")
-	public List<Player> players() {
-		return playerRepository.findAll();
+	public Map<Discipline, List<Player>> players() {
+		// create map corresponding discipline|List of players
+		List<Player> playerList = playerRepository.findAll();
+
+		Map<Discipline, List<Player>> playerDisciplines = new HashMap<Discipline, List<Player>>();
+		for (Player player : playerList) {
+			Discipline disc = player.getDiscipline();
+			if (!playerDisciplines.containsKey(disc)) {
+				List<Player> discPlayers = new LinkedList<Player>();
+				discPlayers.add(player);
+				playerDisciplines.put(disc, discPlayers);
+			} else {
+				List<Player> discPlayers = playerDisciplines.get(disc);
+				discPlayers.add(player);
+				playerDisciplines.put(disc, discPlayers);
+			}
+
+		}
+
+		return playerDisciplines;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -82,8 +103,9 @@ public class GameController {
 			return "redirect:.";
 		}
 	}
+
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteGame(@PathVariable Integer id, Model model){
+	public String deleteGame(@PathVariable Integer id, Model model) {
 		Game game = gameRepository.findOne(id);
 		if (game != null) {
 			gameRepository.delete(id);
@@ -91,8 +113,7 @@ public class GameController {
 		} else {
 			return "redirect:.";
 		}
-		
+
 	}
-	
 
 }

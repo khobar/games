@@ -9,21 +9,15 @@
 	<div class="container">
 		<a href="<c:url value="/games/list"/>"><i class="icon-arrow-left"></i>Back</a>
 		<f:form commandName="game" cssClass="form-inline">
-			<p:field path="player1" label="Player 1">
-				<f:select path="player1">
-					<f:options items="${players}" itemLabel="surname" itemValue="id" />
-				</f:select>
-			</p:field>
-			<p:field path="player2" label="Player 2">
-				<f:select path="player2">
-					<f:options items="${players}" itemLabel="surname" itemValue="id" />
-				</f:select>
-			</p:field>
 			<p:field path="discipline" label="Discipline">
 				<f:select path="discipline">
 					<f:options items="${disciplines}" itemLabel="name" itemValue="id" />
 				</f:select>
 			</p:field>
+			<c:forEach var="entry" items="${players}">
+  				Key: <c:out value="${entry.key}" />
+  				Value: <c:out value="${entry.value}" />
+			</c:forEach>
 			<p:field path="score" label="Score">
 				<f:input path="score" />
 			</p:field>

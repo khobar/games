@@ -38,8 +38,9 @@ public class DisciplineController {
 		if (result.hasErrors()) {
 			return "discipline/edit";
 		} else {
-			if (disc.getPlayersNumber() == 0) {
-				disc.setPlayersNumber(1);
+			System.out.println(disc.getPlayersNumber());
+			if (disc.getPlayersNumber() < 2) {
+				disc.setPlayersNumber(2);//set 2 , as there is problem with H2 DB
 			}
 			Discipline saved = discRepo.save(disc);
 			return "redirect:./list";
