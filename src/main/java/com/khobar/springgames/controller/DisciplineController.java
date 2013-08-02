@@ -41,8 +41,7 @@ public class DisciplineController {
 		} else {
 			System.out.println(disc.getPlayersNumber());
 			if (disc.getPlayersNumber() < 2) {
-				disc.setPlayersNumber(2);// set 2 , as there is problem with H2
-											// DB
+				disc.setPlayersNumber(2);//set 2 , as there is problem with H2 DB
 			}
 			Discipline saved = discRepo.save(disc);
 			return "redirect:./list";
@@ -83,13 +82,12 @@ public class DisciplineController {
 		model.addAttribute("distList", distList);
 		return "discipline/list";
 	}
-
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteDiscipline(@PathVariable Integer id, Model model) {
 		Discipline disc = discRepo.findOne(id);
 		if (disc != null) {
 			discRepo.delete(disc);
-			return "/discipline/list";
+			return "redirect:/discipline/list";
 		} else {
 			return "redirect:.";
 		}

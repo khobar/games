@@ -109,7 +109,7 @@ public class GameController {
 		Game game = gameRepository.findOne(id);
 		if (game != null) {
 			gameRepository.delete(id);
-			return "/games/list";
+			return "redirect:/games/list";
 		} else {
 			return "redirect:.";
 		}
