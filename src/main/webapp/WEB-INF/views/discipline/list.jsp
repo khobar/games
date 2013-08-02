@@ -30,7 +30,7 @@
 				<tr>
 					<td>${p.name}</td>
 					<td>${p.federation}</td>
-					<td>${p.playersNumber}</td>
+					<td>${p.playersNumber -2}</td>
 					<td><a href="<c:url value="/discipline/${p.id}/"/>"><i
 							class="icon-pencil"></i>Edit</a></td>
 					<td><a href="<c:url value="/discipline/${p.id}/delete"/>">Delete<i

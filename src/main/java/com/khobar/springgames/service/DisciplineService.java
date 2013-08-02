@@ -26,7 +26,8 @@ public class DisciplineService {
 
 	public void addNo(Discipline dis) {
 		Discipline discipline = discRepository.findOne(dis.getId());
-		discipline.setPlayersNumber(discipline.getPlayersNumber() + 1);
+		int playerNo =discipline.getPlayersNumber();
+		discipline.setPlayersNumber( playerNo + 1);
 		discRepository.save(discipline);
 		
 	}
